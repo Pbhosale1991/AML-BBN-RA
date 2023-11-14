@@ -1,0 +1,926 @@
+﻿<CAEXFile SchemaVersion="3.0" FileName="FR1.aml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
+  <SuperiorStandardVersion>AutomationML 2.10</SuperiorStandardVersion>
+  <SourceDocumentInformation OriginName="Pushparaj Bhosale" OriginID="916578CA-FE0D-474E-A4FC-9E1719892369" OriginVersion="5.6.10.0" LastWritingDateTime="2023-08-23T13:26:55.5632075+02:00" OriginProjectID="DataSource" OriginProjectTitle="AML based data source for integrated risk assessment" OriginRelease="5.6.10.0" OriginVendor="AutomationML e.V." OriginVendorURL="www.AutomationML.org" />
+  <InstanceHierarchy Name="SortingStationSystem">
+    <Version>0</Version>
+    <InternalElement Name="Conveyor Module" ID="CM" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Description>Conveyor module transports the work piece to the next station</Description>
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Festo</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>8032692</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <InternalElement Name="Conveyor Belt" ID="CB" RefBaseSystemUnitPath="AssetOfICS/Hardware/Non-Automation Devices">
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+      <InternalElement Name="Motor for movement" ID="MFM" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Actuator">
+        <Attribute Name="MotorAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string" />
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string" Unit="per hour">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.00000176</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="ActuatorIP" ID="7d39519b-85d9-419b-a12c-de400a716667" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="ActuatorIP1" ID="380cb655-ae1f-4d8b-812c-d1be93e8209d" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="5af650d3-a8b9-45fa-8411-ea8703e527d9" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="5af650d3-a8b9-45fa-8411-ea8703e527d9" RefPartnerSideB="38ad68a6-d108-405b-b67d-d2864ecd8ca0" Name="MFM_to_Haz02" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+      <InternalElement Name="Motor Controller" ID="MCF" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Controller">
+        <Attribute Name="MotorControllerAttribute" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string" />
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.00000176</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="IOfromController" ID="ac7ed34e-573e-4535-8860-fb24768831ec" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="IOfromController1" ID="26be5d3c-2671-463b-a05c-bdc4edb856cd" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <InternalLink RefPartnerSideA="26be5d3c-2671-463b-a05c-bdc4edb856cd" RefPartnerSideB="380cb655-ae1f-4d8b-812c-d1be93e8209d" Name="MCF_MFM_IL" />
+        <InternalLink RefPartnerSideA="ac7ed34e-573e-4535-8860-fb24768831ec" RefPartnerSideB="7d39519b-85d9-419b-a12c-de400a716667" Name="MCF_MFM_IL1" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+      <InternalElement Name="Optical Sensor at Start of conveyor belt" ID="OSS" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Sensor">
+        <Attribute Name="OSSAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string" />
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.00000016</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="SensorOP" ID="f219ef87-1d35-4455-9bb9-315179507c02" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="SensorOP1" ID="95058e1c-9647-4526-9cc6-69a534e35371" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="884e106e-c2ef-4c97-b89c-6f625c770dd6" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="f219ef87-1d35-4455-9bb9-315179507c02" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="OSS_MiniIO_NWLink" />
+        <InternalLink RefPartnerSideA="884e106e-c2ef-4c97-b89c-6f625c770dd6" RefPartnerSideB="9ea16751-481f-4c89-8d2d-f1e857fb95c1" Name="OSS_to_Haz01" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+      <InternalElement Name="Optical Sensor at End of conveyor belt" ID="OSE" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Sensor">
+        <Attribute Name="OSEAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string">
+            <Value></Value>
+          </Attribute>
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.00000016</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:string" />
+        </Attribute>
+        <ExternalInterface Name="SensorOP" ID="96e2e0f7-2248-402c-bc9f-50a6940749c6" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="SensorOP1" ID="94b33c1a-dfb4-4c19-9c98-500206134d19" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="703a4f88-5f06-4a1e-a081-74a4845e6fbb" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="96e2e0f7-2248-402c-bc9f-50a6940749c6" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="OSE_MiniIO_NWLink" />
+        <InternalLink RefPartnerSideA="703a4f88-5f06-4a1e-a081-74a4845e6fbb" RefPartnerSideB="0fc0b8cc-7c2b-4351-91ea-f3b77999cbcd" Name="OSE_to_Haz11" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+    </InternalElement>
+    <InternalElement Name="Detection Module" ID="DM" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device">
+      <Attribute Name="DMAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string" />
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <InternalElement Name="Inductive proximity sensor for detection module" ID="IPS-DM" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Sensor">
+        <Attribute Name="IPSDMAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string" />
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.00001538</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="SensorOP" ID="a76b293e-5f7d-4144-a971-d3c92d2b147f" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="SensorOP1" ID="c0a2ebc8-2727-4b27-b373-092104387f4e" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="b379a9a0-4111-4ff1-a467-75e08c6b84e2" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="a76b293e-5f7d-4144-a971-d3c92d2b147f" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="IPS-DM_MiniIO_NWLink" />
+        <InternalLink RefPartnerSideA="b379a9a0-4111-4ff1-a467-75e08c6b84e2" RefPartnerSideB="e7db4309-5c4d-451d-820b-0a8ff22fcd5c" Name="IPS-DM_to_Haz03" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+      <InternalElement Name="Diffuse sensor for detection module" ID="DS-DM" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Sensor">
+        <Attribute Name="DSDMAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string" />
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.00000016</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="SensorOP" ID="203e578c-d634-425a-b9f5-cad70f738dc7" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="SensorOP1" ID="5a9cdfa9-e3da-429d-9b52-c9444febc977" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="d2a02242-882f-4d41-bacd-f4a1a0a5d4a2" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="203e578c-d634-425a-b9f5-cad70f738dc7" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="DS-DM_MiniIO_NWLink" />
+        <InternalLink RefPartnerSideA="d2a02242-882f-4d41-bacd-f4a1a0a5d4a2" RefPartnerSideB="e7db4309-5c4d-451d-820b-0a8ff22fcd5c" Name="DS-DM_to_Haz03" />
+        <InternalLink RefPartnerSideA="d2a02242-882f-4d41-bacd-f4a1a0a5d4a2" RefPartnerSideB="99190ec4-1048-4d27-b801-504f4c241289" Name="DS-DN-to-Haz04" />
+        <InternalLink RefPartnerSideA="d2a02242-882f-4d41-bacd-f4a1a0a5d4a2" RefPartnerSideB="26dc9b7a-8ef2-40c3-bd8d-1de83035f170" Name="DS-DM_to_Haz05" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+      <InternalElement Name="Forked light barrier sensor for detection module" ID="FLBS-DM" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Sensor">
+        <Attribute Name="FLBSDMAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string" />
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.00000016</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="SensorOP" ID="b634e93c-1ab3-477c-9e9e-338ea28f0b01" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="SensorOP1" ID="de0aec8e-ed33-4adc-8832-7d544d11a5db" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="50af49db-cf01-493e-840b-6577f5595161" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="b634e93c-1ab3-477c-9e9e-338ea28f0b01" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="FLBS-DM_MiniIO_NWLink" />
+        <InternalLink RefPartnerSideA="50af49db-cf01-493e-840b-6577f5595161" RefPartnerSideB="e7db4309-5c4d-451d-820b-0a8ff22fcd5c" Name="FLBS-DM_to_Haz03" />
+        <InternalLink RefPartnerSideA="50af49db-cf01-493e-840b-6577f5595161" RefPartnerSideB="26dc9b7a-8ef2-40c3-bd8d-1de83035f170" Name="FLBS-DM_to_Haz05" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+    </InternalElement>
+    <InternalElement Name="Sorting for Red WP" ID="RS" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device">
+      <InternalElement Name="Solenoid deflector sorts the red work piece" ID="SD-RS" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Actuator">
+        <Attribute Name="RSAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string" />
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.0000035</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="ActuatorIP" ID="f0d0c586-d2b5-463c-aa59-346066f9b422" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="ActuatorIP1" ID="b996da92-5941-4477-a983-f63618b3390f" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="cb754d1e-4a21-45ba-bdeb-265a98ad3862" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="f0d0c586-d2b5-463c-aa59-346066f9b422" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="SD-RS_MiniIO_NWLink" />
+        <InternalLink RefPartnerSideA="cb754d1e-4a21-45ba-bdeb-265a98ad3862" RefPartnerSideB="c7d8daee-a529-497b-9658-d4c0369f0d55" Name="SD-RS_to_Haz16" />
+        <InternalLink RefPartnerSideA="cb754d1e-4a21-45ba-bdeb-265a98ad3862" RefPartnerSideB="b4f33a6c-a950-4cb5-b331-3645e0fd1c19" Name="SD-RS_to_Haz07" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Safety" />
+      </InternalElement>
+      <InternalElement Name="Slide for work piece" ID="Slide">
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+      <InternalElement Name="Light barrier sensor" ID="LBS-RS" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Sensor">
+        <Attribute Name="LBSRSAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string" />
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.00000016</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="SensorOP" ID="9bf24d20-5cba-4dfb-9d3b-776554dc25e6" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="SensorOP1" ID="65ac5764-b8c6-40b4-b410-ca8965412009" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="56f06e42-21df-47d5-a3b4-695622a81b32" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="9bf24d20-5cba-4dfb-9d3b-776554dc25e6" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="LBS-RS_MiniIO_NWLink" />
+        <InternalLink RefPartnerSideA="56f06e42-21df-47d5-a3b4-695622a81b32" RefPartnerSideB="b4f33a6c-a950-4cb5-b331-3645e0fd1c19" Name="LBS-RS_to_Haz07" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+    </InternalElement>
+    <InternalElement Name="Sorting for Black WP" ID="BS" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device">
+      <InternalElement Name="Solenoid deflector" ID="SD-BS" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Actuator">
+        <Attribute Name="BSAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string">
+            <Value></Value>
+          </Attribute>
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.0000035</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="ActuatorIP" ID="7d99e422-a195-4a38-b3c7-73b855d27032" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="ActuatorIP1" ID="e739cfc0-0477-4968-bc8a-a2949ece4025" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="a6312752-f0a9-4b52-8569-84ae0edf7287" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="7d99e422-a195-4a38-b3c7-73b855d27032" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="SD-BS_MiniIO_NWLink" />
+        <InternalLink RefPartnerSideA="a6312752-f0a9-4b52-8569-84ae0edf7287" RefPartnerSideB="c7d8daee-a529-497b-9658-d4c0369f0d55" Name="SD-BS_to_Haz16" />
+        <InternalLink RefPartnerSideA="a6312752-f0a9-4b52-8569-84ae0edf7287" RefPartnerSideB="5b58b91a-4fe9-4aa9-bb53-d0430099adb5" Name="SD-BS_to_Haz08" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Safety" />
+      </InternalElement>
+      <InternalElement Name="Slide for work piece" ID="Slide">
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+      <InternalElement Name="Light barrier sensor" ID="LBS-BS" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Sensor">
+        <Attribute Name="LBSBSAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+          <Attribute Name="Vendor" AttributeDataType="xs:string">
+            <Value></Value>
+          </Attribute>
+          <Attribute Name="Part" AttributeDataType="xs:string" />
+          <Attribute Name="Product" AttributeDataType="xs:string" />
+          <Attribute Name="Version" AttributeDataType="xs:string" />
+          <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+            <Revision>
+              <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+              <AuthorName></AuthorName>
+            </Revision>
+            <Value>0.00000016</Value>
+          </Attribute>
+          <Attribute Name="Date of first use" AttributeDataType="xs:date">
+            <Value>2023-04-01</Value>
+          </Attribute>
+        </Attribute>
+        <ExternalInterface Name="SensorOP" ID="111f7f99-d2f2-4eea-a984-976ce1fe0971" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="SensorOP1" ID="fc9bf117-9a88-4132-aef2-bbaed212ef41" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        <ExternalInterface Name="toHazard" ID="9a673bdb-932d-40d7-b75e-d6a7d3ab6b7e" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+        <InternalLink RefPartnerSideA="111f7f99-d2f2-4eea-a984-976ce1fe0971" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="LBS-BS_MiniIO_NWLink" />
+        <InternalLink RefPartnerSideA="9a673bdb-932d-40d7-b75e-d6a7d3ab6b7e" RefPartnerSideB="5b58b91a-4fe9-4aa9-bb53-d0430099adb5" Name="LBS-BS_to_Haz08" />
+        <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      </InternalElement>
+    </InternalElement>
+    <InternalElement Name="Compressor" ID="Comp" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="CompressorAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string" />
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+          <Value>0.00001142</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-04-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="User Input" ID="a6e5b883-e5e6-4eae-b6b4-929275851661" RefBaseClassPath="ConnectionBetnAssets/User based" />
+      <ExternalInterface Name="toHazard" ID="27b789f2-f795-4b3a-854b-36458314584e" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <ExternalInterface Name="FromCompressor" ID="b2d021e3-f551-459e-9add-70ef12e50ee4" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+      <InternalLink RefPartnerSideA="27b789f2-f795-4b3a-854b-36458314584e" RefPartnerSideB="d52dc3c7-dc82-4dba-80e5-3534e4f0ad92" Name="Compressor_to_Haz15" />
+      <InternalLink RefPartnerSideA="27b789f2-f795-4b3a-854b-36458314584e" RefPartnerSideB="b4f33a6c-a950-4cb5-b331-3645e0fd1c19" Name="Compressor_to_Haz07" />
+      <InternalLink RefPartnerSideA="27b789f2-f795-4b3a-854b-36458314584e" RefPartnerSideB="5b58b91a-4fe9-4aa9-bb53-d0430099adb5" Name="Compressor_to_Haz08" />
+      <InternalLink RefPartnerSideA="b2d021e3-f551-459e-9add-70ef12e50ee4" RefPartnerSideB="b996da92-5941-4477-a983-f63618b3390f" Name="Comp_to_Deflector_Red" />
+      <InternalLink RefPartnerSideA="b2d021e3-f551-459e-9add-70ef12e50ee4" RefPartnerSideB="e739cfc0-0477-4968-bc8a-a2949ece4025" Name="Comp_to_Deflector_black" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Safety" />
+    </InternalElement>
+    <InternalElement Name="Cobot" ID="COBOT" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="CobotAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value></Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+          <Value>1E-07</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-04-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="IOfromMC" ID="0b6663cf-8e8f-45cb-a051-ef3167494827" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+      <ExternalInterface Name="IOfromMC1" ID="81d3e593-0655-4e33-87c5-7e9ed77a0587" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+      <ExternalInterface Name="toHazard" ID="1757fe2f-304c-42dd-8be1-3705c7fd4a4b" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="0b6663cf-8e8f-45cb-a051-ef3167494827" RefPartnerSideB="825f3f6d-46c2-4440-9ddd-d8485ba82932" Name="Cobot_Switch_NWLink" />
+      <InternalLink RefPartnerSideA="1757fe2f-304c-42dd-8be1-3705c7fd4a4b" RefPartnerSideB="b6ebb735-a62b-4c1c-9aa1-a877d26acf2f" Name="Cobot_to_Haz10" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Safety" />
+    </InternalElement>
+    <InternalElement Name="Cobot Interface" ID="CI" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Work station">
+      <Attribute Name="CobotInterfaceAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string" />
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+          <Value>0.0000001</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-04-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="IOfromWS" ID="ce8cedfe-bba8-486b-8cc9-daf7eeefeb7d" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+      <ExternalInterface Name="IOfromWS1" ID="dee31470-d493-4fd8-9574-e5c1f5e1b5d5" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+      <ExternalInterface Name="Vul_Cobot" ID="8ec5ec44-ad44-484e-8336-f8e1ffaa13bd" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef" />
+      <InternalLink RefPartnerSideA="ce8cedfe-bba8-486b-8cc9-daf7eeefeb7d" RefPartnerSideB="825f3f6d-46c2-4440-9ddd-d8485ba82932" Name="CI_Switch_NWLink" />
+      <InternalLink RefPartnerSideA="dee31470-d493-4fd8-9574-e5c1f5e1b5d5" RefPartnerSideB="81d3e593-0655-4e33-87c5-7e9ed77a0587" Name="CI_Cobot_LogicLink" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Security" />
+    </InternalElement>
+    <InternalElement Name="Programmable logic Device" ID="PLC" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Controller">
+      <Description>PLC functions as per program</Description>
+      <Attribute Name="PLCAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string" />
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+          <Value>0.000008152</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-04-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="IOfromController" ID="32bc475f-fad0-4b6d-8173-e1f0d3c64694" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+      <ExternalInterface Name="IOfromController1" ID="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+      <ExternalInterface Name="Vul_PLC" ID="83e8ea08-efec-4f5d-97b9-660c1cdbd768" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="26be5d3c-2671-463b-a05c-bdc4edb856cd" Name="PLC_MCF_LogicLink" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="95058e1c-9647-4526-9cc6-69a534e35371" Name="PLC_OSS_LogicLink" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="94b33c1a-dfb4-4c19-9c98-500206134d19" Name="PLC_OSE_LogicLink" />
+      <InternalLink RefPartnerSideA="32bc475f-fad0-4b6d-8173-e1f0d3c64694" RefPartnerSideB="825f3f6d-46c2-4440-9ddd-d8485ba82932" Name="PLC_Switch_NWLink" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="c0a2ebc8-2727-4b27-b373-092104387f4e" Name="PLC_IPS-DM_LogicLink" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="5a9cdfa9-e3da-429d-9b52-c9444febc977" Name="PLC_DS-DM_LogicLink" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="de0aec8e-ed33-4adc-8832-7d544d11a5db" Name="PLC_FLBS-DM_LogicLink" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="b996da92-5941-4477-a983-f63618b3390f" Name="PLC_SD-RS_LogicLink" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="65ac5764-b8c6-40b4-b410-ca8965412009" Name="PLC_LBS-RS_LogicLink" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="e739cfc0-0477-4968-bc8a-a2949ece4025" Name="PLC_SD-BS_LogicLink" />
+      <InternalLink RefPartnerSideA="4e616554-bde2-4858-b9ce-ec1b4acaa430" RefPartnerSideB="fc9bf117-9a88-4132-aef2-bbaed212ef41" Name="PLC_LBS-BS_LogicLink" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Security" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Safety" />
+    </InternalElement>
+    <InternalElement Name="Switch" ID="SW" RefBaseSystemUnitPath="AssetOfICS/Hardware/Network Devices">
+      <Attribute Name="SwitchAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string" />
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-04-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="IOfromSwitch" ID="825f3f6d-46c2-4440-9ddd-d8485ba82932" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+      <InternalLink RefPartnerSideA="825f3f6d-46c2-4440-9ddd-d8485ba82932" RefPartnerSideB="854cef47-7130-447d-a7b5-d6dc2cdcf08c" Name="Switch_IOModule_NWLink" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Communication" />
+    </InternalElement>
+    <InternalElement Name="IO link Gateway" ID="IOL" RefBaseSystemUnitPath="AssetOfICS/Hardware/Network Devices">
+      <Attribute Name="IOLinkAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string" />
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+          <Value>0.000000146</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-04-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="IOfromModule" ID="854cef47-7130-447d-a7b5-d6dc2cdcf08c" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+      <InternalLink RefPartnerSideA="854cef47-7130-447d-a7b5-d6dc2cdcf08c" RefPartnerSideB="26ba1531-ea9c-4a9a-9de0-ac901b429657" Name="MiniIO_IOlinkgateway_NWLink" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Communication" />
+    </InternalElement>
+    <InternalElement Name="Mini IO terminal" ID="MIO" RefBaseSystemUnitPath="AssetOfICS/Hardware/Network Devices">
+      <Attribute Name="MiniIOAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>0.000000146</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-04-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="IOfromModule" ID="26ba1531-ea9c-4a9a-9de0-ac901b429657" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+      <InternalLink RefPartnerSideA="26ba1531-ea9c-4a9a-9de0-ac901b429657" RefPartnerSideB="ac7ed34e-573e-4535-8860-fb24768831ec" Name="MCF_MiniIO_NWLink" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Communication" />
+    </InternalElement>
+    <InternalElement Name="Operator" ID="Operator" RefBaseSystemUnitPath="AssetOfICS/User">
+      <Attribute Name="HumanErrorEstimationPercentage" AttributeDataType="xs:string">
+        <Value>5</Value>
+      </Attribute>
+      <ExternalInterface Name="IOfromUser" ID="1c7e6deb-50b1-4b6f-8f40-ccd370d0dd06" RefBaseClassPath="ConnectionBetnAssets/User based" />
+      <ExternalInterface Name="toHazard" ID="870bb67c-df05-42e3-9bb8-1783bdb2e5e6" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="1c7e6deb-50b1-4b6f-8f40-ccd370d0dd06" RefPartnerSideB="774e4645-5c10-435e-8bcd-30e0dc9549c3" Name="Operator_EmergencySwitch_UserLink" />
+      <InternalLink RefPartnerSideA="870bb67c-df05-42e3-9bb8-1783bdb2e5e6" RefPartnerSideB="9ea16751-481f-4c89-8d2d-f1e857fb95c1" Name="Operator_to_Haz01" />
+      <InternalLink RefPartnerSideA="870bb67c-df05-42e3-9bb8-1783bdb2e5e6" RefPartnerSideB="59a3199f-04d2-479d-ab9d-287fb15d6310" Name="Operator_to_Haz14" />
+      <InternalLink RefPartnerSideA="870bb67c-df05-42e3-9bb8-1783bdb2e5e6" RefPartnerSideB="c7d8daee-a529-497b-9658-d4c0369f0d55" Name="Operator_to_Haz16" />
+      <InternalLink RefPartnerSideA="870bb67c-df05-42e3-9bb8-1783bdb2e5e6" RefPartnerSideB="2d7f1687-b3b5-460c-9b6a-d312930e6c05" Name="Operator_to_Haz06" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Safety" />
+    </InternalElement>
+    <InternalElement Name="Maintenance" ID="Maintenance" RefBaseSystemUnitPath="AssetOfICS/User">
+      <Attribute Name="HumanErrorEstimationPercentage" AttributeDataType="xs:string">
+        <Value>2.5</Value>
+      </Attribute>
+      <ExternalInterface Name="IOfromUser" ID="8e66cbd1-35ac-4193-8e31-d4fa90f92e44" RefBaseClassPath="ConnectionBetnAssets/User based" />
+      <ExternalInterface Name="toHazard" ID="1edbb3b8-af9f-4375-961a-800e6bd2c780" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="8e66cbd1-35ac-4193-8e31-d4fa90f92e44" RefPartnerSideB="a6e5b883-e5e6-4eae-b6b4-929275851661" Name="Maintenance of compressor" />
+      <InternalLink RefPartnerSideA="1edbb3b8-af9f-4375-961a-800e6bd2c780" RefPartnerSideB="d52dc3c7-dc82-4dba-80e5-3534e4f0ad92" Name="Maintenance_to_Haz15" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Safety" />
+    </InternalElement>
+    <InternalElement Name="Emergency stop" ID="ES" RefBaseSystemUnitPath="AssetOfICS/Hardware/Process device/Sensor">
+      <Attribute Name="EmergencyStopAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string" />
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+          <Value>0.000001</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:date">
+          <Value>2023-04-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="User Input" ID="774e4645-5c10-435e-8bcd-30e0dc9549c3" RefBaseClassPath="ConnectionBetnAssets/User based" />
+      <ExternalInterface Name="toHazard" ID="ba45db53-1592-492f-ad9e-d408cb89da70" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="ba45db53-1592-492f-ad9e-d408cb89da70" RefPartnerSideB="bc5d128f-0d0e-4044-9d41-bcea2299f5ec" Name="ES_to_SPI" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Safety" />
+    </InternalElement>
+    <InternalElement Name="Power supply" ID="PS">
+      <Attribute Name="PowerSupplyAttributes" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string" />
+        <Attribute Name="Part" AttributeDataType="xs:string" />
+        <Attribute Name="Product" AttributeDataType="xs:string" />
+        <Attribute Name="Version" AttributeDataType="xs:string" />
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:string">
+          <Revision>
+            <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+            <AuthorName></AuthorName>
+          </Revision>
+          <Value>0.00000095</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string" />
+      </Attribute>
+      <ExternalInterface Name="toHazard" ID="9b1ad2a0-22fa-4c8c-9a1d-486b7d71ff05" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="9b1ad2a0-22fa-4c8c-9a1d-486b7d71ff05" RefPartnerSideB="bc5d128f-0d0e-4044-9d41-bcea2299f5ec" Name="ES_to_SPI" />
+      <RoleRequirements RefBaseRoleClassPath="Requirements/Process" />
+    </InternalElement>
+  </InstanceHierarchy>
+  <InstanceHierarchy Name="HazardsOfSortingStation">
+    <Version>0</Version>
+    <InternalElement Name="No work piece detected at the start of conveyor belt" ID="Haz01" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Description>No work piece detected at the start of conveyor belt</Description>
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz01" ID="9ea16751-481f-4c89-8d2d-f1e857fb95c1" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="9ea16751-481f-4c89-8d2d-f1e857fb95c1" RefPartnerSideB="38ad68a6-d108-405b-b67d-d2864ecd8ca0" Name="Haz01_to_Haz02" />
+    </InternalElement>
+    <InternalElement Name="Conveyor belt does not transport the work piece" ID="Haz02" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Description>Conveyor belt does not transport the work piece</Description>
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz02" ID="38ad68a6-d108-405b-b67d-d2864ecd8ca0" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="38ad68a6-d108-405b-b67d-d2864ecd8ca0" RefPartnerSideB="bc5d128f-0d0e-4044-9d41-bcea2299f5ec" Name="Haz02_to_SPI" />
+    </InternalElement>
+    <InternalElement Name="Loss of work piece detection function" ID="Haz03" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Description></Description>
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz03" ID="e7db4309-5c4d-451d-820b-0a8ff22fcd5c" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="e7db4309-5c4d-451d-820b-0a8ff22fcd5c" RefPartnerSideB="e60855c9-0724-4181-b44c-92d186f3762e" Name="Haz03_to_DMF" />
+    </InternalElement>
+    <InternalElement Name="Loss of color of work piece detection function" ID="Haz04" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz04" ID="99190ec4-1048-4d27-b801-504f4c241289" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="99190ec4-1048-4d27-b801-504f4c241289" RefPartnerSideB="b4f33a6c-a950-4cb5-b331-3645e0fd1c19" Name="Haz04_to_Haz07" />
+      <InternalLink RefPartnerSideA="99190ec4-1048-4d27-b801-504f4c241289" RefPartnerSideB="5b58b91a-4fe9-4aa9-bb53-d0430099adb5" Name="Haz04_to_Haz08" />
+      <InternalLink RefPartnerSideA="99190ec4-1048-4d27-b801-504f4c241289" RefPartnerSideB="763c9d28-b1a9-4361-ad02-e13b710dd500" Name="Haz04_to_Haz09" />
+      <InternalLink RefPartnerSideA="99190ec4-1048-4d27-b801-504f4c241289" RefPartnerSideB="e60855c9-0724-4181-b44c-92d186f3762e" Name="Haz04_to_DMF" />
+    </InternalElement>
+    <InternalElement Name="Loss of type of work piece detection function" ID="Haz05" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz05" ID="26dc9b7a-8ef2-40c3-bd8d-1de83035f170" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="26dc9b7a-8ef2-40c3-bd8d-1de83035f170" RefPartnerSideB="e60855c9-0724-4181-b44c-92d186f3762e" Name="Haz05_to_DMF" />
+    </InternalElement>
+    <InternalElement Name="Slides for work pieces are full" ID="Haz06" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz06" ID="2d7f1687-b3b5-460c-9b6a-d312930e6c05" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="2d7f1687-b3b5-460c-9b6a-d312930e6c05" RefPartnerSideB="b4f33a6c-a950-4cb5-b331-3645e0fd1c19" Name="Haz06_to_Haz07" />
+      <InternalLink RefPartnerSideA="2d7f1687-b3b5-460c-9b6a-d312930e6c05" RefPartnerSideB="5b58b91a-4fe9-4aa9-bb53-d0430099adb5" Name="Haz06_to_Haz08" />
+    </InternalElement>
+    <InternalElement Name="Sorting of red work piece not possible" ID="Haz07" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz07" ID="b4f33a6c-a950-4cb5-b331-3645e0fd1c19" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="b4f33a6c-a950-4cb5-b331-3645e0fd1c19" RefPartnerSideB="09ce7850-dd76-4d70-9a08-2af84da2c2d9" Name="Haz07_to_Haz12" />
+      <InternalLink RefPartnerSideA="b4f33a6c-a950-4cb5-b331-3645e0fd1c19" RefPartnerSideB="4ccade17-25ee-4031-b5fd-708501f9164a" Name="Haz07_to_SMF" />
+    </InternalElement>
+    <InternalElement Name="Sorting of black work piece not possible" ID="Haz08" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz08" ID="5b58b91a-4fe9-4aa9-bb53-d0430099adb5" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="5b58b91a-4fe9-4aa9-bb53-d0430099adb5" RefPartnerSideB="13c20a54-00b0-4ac5-a743-d04db182e993" Name="Haz08_to_Haz13" />
+      <InternalLink RefPartnerSideA="5b58b91a-4fe9-4aa9-bb53-d0430099adb5" RefPartnerSideB="4ccade17-25ee-4031-b5fd-708501f9164a" Name="Haz08_to_SMF" />
+    </InternalElement>
+    <InternalElement Name="Sorting of Silver work piece not possible" ID="Haz09" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz09" ID="763c9d28-b1a9-4361-ad02-e13b710dd500" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="763c9d28-b1a9-4361-ad02-e13b710dd500" RefPartnerSideB="0fc0b8cc-7c2b-4351-91ea-f3b77999cbcd" Name="Haz09_to_Haz11" />
+      <InternalLink RefPartnerSideA="763c9d28-b1a9-4361-ad02-e13b710dd500" RefPartnerSideB="4ccade17-25ee-4031-b5fd-708501f9164a" Name="Haz09_to_SMF" />
+    </InternalElement>
+    <InternalElement Name="Cobot function stops" ID="Haz10" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz10" ID="b6ebb735-a62b-4c1c-9aa1-a877d26acf2f" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="b6ebb735-a62b-4c1c-9aa1-a877d26acf2f" RefPartnerSideB="2d7f1687-b3b5-460c-9b6a-d312930e6c05" Name="Haz10_to_Haz06" />
+      <InternalLink RefPartnerSideA="b6ebb735-a62b-4c1c-9aa1-a877d26acf2f" RefPartnerSideB="0fc0b8cc-7c2b-4351-91ea-f3b77999cbcd" Name="Haz10_to_Haz11" />
+      <InternalLink RefPartnerSideA="b6ebb735-a62b-4c1c-9aa1-a877d26acf2f" RefPartnerSideB="09ce7850-dd76-4d70-9a08-2af84da2c2d9" Name="Haz10_to_Haz12" />
+      <InternalLink RefPartnerSideA="b6ebb735-a62b-4c1c-9aa1-a877d26acf2f" RefPartnerSideB="13c20a54-00b0-4ac5-a743-d04db182e993" Name="Haz10_to_Haz13" />
+      <InternalLink RefPartnerSideA="b6ebb735-a62b-4c1c-9aa1-a877d26acf2f" RefPartnerSideB="bc5d128f-0d0e-4044-9d41-bcea2299f5ec" Name="Haz10_to_SPI" />
+    </InternalElement>
+    <InternalElement Name="Silver work piece not picked from the end of conveyor by cobot" ID="Haz11" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz11" ID="0fc0b8cc-7c2b-4351-91ea-f3b77999cbcd" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="0fc0b8cc-7c2b-4351-91ea-f3b77999cbcd" RefPartnerSideB="38ad68a6-d108-405b-b67d-d2864ecd8ca0" Name="Haz11_to_Haz02" />
+    </InternalElement>
+    <InternalElement Name="Red work piece is not picked from the slide by cobot" ID="Haz12" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz12" ID="09ce7850-dd76-4d70-9a08-2af84da2c2d9" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+    </InternalElement>
+    <InternalElement Name="Black work piece is not picked from the slide by cobot" ID="Haz13" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz13" ID="13c20a54-00b0-4ac5-a743-d04db182e993" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+    </InternalElement>
+    <InternalElement Name="Operator injured by Cobot" ID="Haz14" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz14" ID="59a3199f-04d2-479d-ab9d-287fb15d6310" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="59a3199f-04d2-479d-ab9d-287fb15d6310" RefPartnerSideB="b6ebb735-a62b-4c1c-9aa1-a877d26acf2f" Name="Haz14_to_Haz10" />
+      <InternalLink RefPartnerSideA="59a3199f-04d2-479d-ab9d-287fb15d6310" RefPartnerSideB="ccd1e535-e9df-4b04-a932-dbefb103a869" Name="Haz14_to_Haz17" />
+    </InternalElement>
+    <InternalElement Name="Operator injured by Compressor" ID="Haz15" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz15" ID="d52dc3c7-dc82-4dba-80e5-3534e4f0ad92" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="d52dc3c7-dc82-4dba-80e5-3534e4f0ad92" RefPartnerSideB="ccd1e535-e9df-4b04-a932-dbefb103a869" Name="Haz15_to_Haz17" />
+    </InternalElement>
+    <InternalElement Name="Operator injured by Sorting deflector" ID="Haz16" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToHaz16" ID="c7d8daee-a529-497b-9658-d4c0369f0d55" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="c7d8daee-a529-497b-9658-d4c0369f0d55" RefPartnerSideB="ccd1e535-e9df-4b04-a932-dbefb103a869" Name="Haz16_to_Haz17" />
+    </InternalElement>
+    <InternalElement Name="Operator injured" ID="OI" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToOI" ID="ccd1e535-e9df-4b04-a932-dbefb103a869" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="ccd1e535-e9df-4b04-a932-dbefb103a869" RefPartnerSideB="bc5d128f-0d0e-4044-9d41-bcea2299f5ec" Name="Haz17_to_SPI" />
+      <InternalLink RefPartnerSideA="ccd1e535-e9df-4b04-a932-dbefb103a869" RefPartnerSideB="9ea16751-481f-4c89-8d2d-f1e857fb95c1" Name="OI_to_Haz01" />
+    </InternalElement>
+    <InternalElement Name="Detecting mechanism fail" ID="DMF" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToDMF" ID="e60855c9-0724-4181-b44c-92d186f3762e" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="e60855c9-0724-4181-b44c-92d186f3762e" RefPartnerSideB="bc5d128f-0d0e-4044-9d41-bcea2299f5ec" Name="DMF_to_SPI" />
+    </InternalElement>
+    <InternalElement Name="Sorting mechanism fail" ID="SMF" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToSMF" ID="4ccade17-25ee-4031-b5fd-708501f9164a" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+      <InternalLink RefPartnerSideA="4ccade17-25ee-4031-b5fd-708501f9164a" RefPartnerSideB="bc5d128f-0d0e-4044-9d41-bcea2299f5ec" Name="SMF_to_SPI" />
+    </InternalElement>
+    <InternalElement Name="Sorting process incomplete" ID="SPI" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <ExternalInterface Name="ToSPI" ID="bc5d128f-0d0e-4044-9d41-bcea2299f5ec" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+    </InternalElement>
+  </InstanceHierarchy>
+  <InstanceHierarchy Name="VulnerabilityOfSortingStation">
+    <Version>0</Version>
+    <InternalElement Name="DoS_Cobot" ID="V1" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string" />
+        <Attribute Name="CVSS" AttributeDataType="xs:string" ID="CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:T/RC:R">
+          <Value>CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:T/RC:R</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+        <Attribute Name="Impact possibility" AttributeDataType="xs:string" />
+        <Attribute Name="mitigation possibility" AttributeDataType="xs:string" />
+        <Attribute Name="Probability of exposure" AttributeDataType="xs:string">
+          <Value>0.149631031</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ToV1" ID="e20849f4-7af3-41d3-a144-3d04f9b93825" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef" />
+      <InternalLink RefPartnerSideA="e20849f4-7af3-41d3-a144-3d04f9b93825" RefPartnerSideB="8ec5ec44-ad44-484e-8336-f8e1ffaa13bd" Name="V1_to_Vul" />
+    </InternalElement>
+    <InternalElement Name="Bruteforce_Cobot" ID="V2" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string" />
+        <Attribute Name="CVSS" AttributeDataType="xs:string" ID="CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:T/RC:R">
+          <Value>CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:L/E:P/RL:T/RC:R</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Brute Force</Value>
+        </Attribute>
+        <Attribute Name="Impact possibility" AttributeDataType="xs:string" />
+        <Attribute Name="mitigation possibility" AttributeDataType="xs:string" />
+        <Attribute Name="Probability of exposure" AttributeDataType="xs:string">
+          <Value>0.01040318</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ToV2" ID="4013b8ba-5af7-451d-88f7-f985fd9be2e2" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef" />
+      <InternalLink RefPartnerSideA="4013b8ba-5af7-451d-88f7-f985fd9be2e2" RefPartnerSideB="8ec5ec44-ad44-484e-8336-f8e1ffaa13bd" Name="V2_to_Vul" />
+    </InternalElement>
+    <InternalElement Name="PriviledgeEscalation_Cobot" ID="V3" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string" />
+        <Attribute Name="CVSS" AttributeDataType="xs:string" ID="CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:T/RC:R">
+          <Value>CVSS:3.1/AV:A/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:L/E:P/RL:T/RC:R</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+        <Attribute Name="Impact possibility" AttributeDataType="xs:string" />
+        <Attribute Name="mitigation possibility" AttributeDataType="xs:string" />
+        <Attribute Name="Probability of exposure" AttributeDataType="xs:string">
+          <Value>0.005206552</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ToV3" ID="25df5476-2cfc-42d0-b30f-68c60c5d9ed8" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef" />
+      <InternalLink RefPartnerSideA="25df5476-2cfc-42d0-b30f-68c60c5d9ed8" RefPartnerSideB="e20849f4-7af3-41d3-a144-3d04f9b93825" Name="V3_to_V1" />
+      <InternalLink RefPartnerSideA="25df5476-2cfc-42d0-b30f-68c60c5d9ed8" RefPartnerSideB="4013b8ba-5af7-451d-88f7-f985fd9be2e2" Name="V3_to_V2" />
+    </InternalElement>
+    <InternalElement Name="DoS_PLC" ID="V4" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2021-44695</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string" ID="CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:T/RC:R">
+          <Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:T/RC:U</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Denial of service</Value>
+        </Attribute>
+        <Attribute Name="Impact possibility" AttributeDataType="xs:string" />
+        <Attribute Name="mitigation possibility" AttributeDataType="xs:string" />
+        <Attribute Name="Probability of exposure" AttributeDataType="xs:string">
+          <Value>0.242064961</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ToV4" ID="bdf2935d-8e9c-407e-9dce-468efcff7b85" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef" />
+      <InternalLink RefPartnerSideA="bdf2935d-8e9c-407e-9dce-468efcff7b85" RefPartnerSideB="83e8ea08-efec-4f5d-97b9-660c1cdbd768" Name="V4_to_Vul_PLC" />
+    </InternalElement>
+    <InternalElement Name="CodeInjection_PLC" ID="V5" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2022-38773</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string" ID="CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:T/RC:R">
+          <Value>CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/RL:U</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Code_Injection</Value>
+        </Attribute>
+        <Attribute Name="Impact possibility" AttributeDataType="xs:string" />
+        <Attribute Name="mitigation possibility" AttributeDataType="xs:string" />
+        <Attribute Name="Probability of exposure" AttributeDataType="xs:string">
+          <Value>0.055367013</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ToV5" ID="08535ae3-55d4-456d-a672-292b074016c3" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef" />
+      <InternalLink RefPartnerSideA="08535ae3-55d4-456d-a672-292b074016c3" RefPartnerSideB="83e8ea08-efec-4f5d-97b9-660c1cdbd768" Name="V5_to_PLC" />
+    </InternalElement>
+  </InstanceHierarchy>
+  <InterfaceClassLib Name="ConnectionBetnAssets">
+    <Version>0</Version>
+    <InterfaceClass Name="Network based" />
+    <InterfaceClass Name="Logic based" />
+    <InterfaceClass Name="User based" />
+    <InterfaceClass Name="HazardRef" />
+    <InterfaceClass Name="VulnerabilityRef" />
+  </InterfaceClassLib>
+  <RoleClassLib Name="Requirements">
+    <Version>0</Version>
+    <RoleClass Name="Process" />
+    <RoleClass Name="Safety" />
+    <RoleClass Name="Security" />
+    <RoleClass Name="Communication" />
+  </RoleClassLib>
+  <SystemUnitClassLib Name="AssetOfICS">
+    <Version>0</Version>
+    <SystemUnitClass Name="Hardware" ID="">
+      <SystemUnitClass Name="Process device" ID="218aad50-66b5-4205-bedb-82909071132c">
+        <SystemUnitClass Name="Sensor" ID="49f8334e-4394-49c7-adb6-d6cbebe9891c">
+          <ExternalInterface Name="SensorOP" ID="2ef137de-c2f2-4a3b-9e3a-eecf3ef300cd" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+          <ExternalInterface Name="SensorOP" ID="c499308a-34d9-4fab-9c61-11387c1cc90a" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Actuator" ID="6c85b309-07b2-45c5-93ef-13cc3346c193">
+          <ExternalInterface Name="ActuatorIP" ID="59442097-a731-4196-a92c-f1395a3580df" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+          <ExternalInterface Name="ActuatorIP" ID="51d73d1b-7def-4558-b7fb-a4d01a0d66fb" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Controller" ID="69411186-9377-4863-b9a0-73aad465cf26">
+          <ExternalInterface Name="IOfromController" ID="8c32edd2-9e17-4f2c-af8f-0b522ba3cbba" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+          <ExternalInterface Name="IOfromController" ID="f7cca4aa-5443-424b-86f4-0c8c8deaa225" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Work station" ID="17945b57-6f0d-4017-881e-41a126e3f90e">
+          <ExternalInterface Name="IOfromWS" ID="52d38b0f-d3f7-4bdb-abc0-16e9dabea340" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+          <ExternalInterface Name="IOfromWS" ID="fa8ebac1-c41b-465d-8fc2-a6582d09e1f7" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Server" ID="bec0cd86-fc7f-4162-bcea-05ed9d32fc04">
+          <ExternalInterface Name="IOfromServer" ID="09a7a80b-0508-4024-9b7a-5cfffb311cff" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+          <ExternalInterface Name="IOfromServer" ID="1479458e-8116-4c70-adc7-0c791e0e1473" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+        </SystemUnitClass>
+      </SystemUnitClass>
+      <SystemUnitClass Name="Machine" ID="b0b90afc-e54a-4f70-ad1a-b57a6aa37126">
+        <ExternalInterface Name="IOfromMC" ID="fc6f76bc-152e-43d9-bf23-4e913d46feac" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="IOfromMC" ID="e7ed45fb-c6e1-46d2-93a6-53d23457768c" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+      </SystemUnitClass>
+      <SystemUnitClass Name="Network Devices" ID="57b6aead-570b-4a12-b8d9-f946373e97a7">
+        <SystemUnitClass Name="IO module" ID="c69ab963-3222-422b-95e7-4e6bb2989149">
+          <ExternalInterface Name="IOfromModule" ID="e0769d3b-4e2a-43fd-b393-fc62a42de931" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Switch" ID="cf31e0ad-1585-44a0-9685-0626236f3604">
+          <ExternalInterface Name="IOfromSwitch" ID="fd0f57a1-533b-4461-b153-92ec483a1dcb" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Router" ID="b84bf1ba-d7b9-457d-a93d-75f384d8e708">
+          <ExternalInterface Name="IOfromRouter" ID="905312d1-bb97-4817-ad2d-66ec3b47851b" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Gateway" ID="bc4bd051-6e3d-4db3-a94c-01e616da50ef">
+          <ExternalInterface Name="IOfromGateway" ID="783db18b-fbf8-4caf-ab8d-0fd346a392bf" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Firewall" ID="592c3197-2afb-42dc-950a-c3018f39a88c">
+          <ExternalInterface Name="IOfromFirewall" ID="9693d158-e354-49fa-bc8c-aba24c759d4a" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        </SystemUnitClass>
+      </SystemUnitClass>
+      <SystemUnitClass Name="Non-Automation Devices" ID="6ae4f50f-cc50-4e0d-bd12-c5a4ac456808" />
+    </SystemUnitClass>
+    <SystemUnitClass Name="Software" ID="55ba674e-2081-4940-8452-44395105cbb3">
+      <SystemUnitClass Name="Firmware/ Operating system" ID="4f9da684-0682-4997-8895-e798b5378d8c" />
+      <SystemUnitClass Name="Application" ID="3932b7d5-9b84-4c3f-a14a-e8f025342011" />
+      <SystemUnitClass Name="Process logic" ID="df9f1505-ebbd-4e0c-9aba-bcc917518086" />
+      <SystemUnitClass Name="OT adapters" ID="01227b68-027c-4b0c-a656-182d97d4f41d" />
+    </SystemUnitClass>
+    <SystemUnitClass Name="User" ID="b1a381bb-985e-4b50-93d3-98b02d304ccd">
+      <ExternalInterface Name="IOfromUser" ID="72bfd734-8588-4801-9e7a-ed486ca78dd7" RefBaseClassPath="ConnectionBetnAssets/User based" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+  <SystemUnitClassLib Name="HazardforSystem">
+    <Version>0</Version>
+    <SystemUnitClass Name="Hazard" ID="e5aa0b0e-32ee-4bb3-a28b-b08ac4cdc5f5">
+      <ExternalInterface Name="HazardRef" ID="e76420a9-0048-4aca-91b3-b7109a6e531b" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+  <SystemUnitClassLib Name="VulnerabilityforSystem">
+    <Version>0</Version>
+    <SystemUnitClass Name="Vulnerability" ID="61c989ba-67ff-4aa8-9daa-937a4d45e0a3">
+      <Attribute Name="CVE" AttributeDataType="xs:string" />
+      <Attribute Name="CVSS" AttributeDataType="xs:string" ID="b623ff6d-1c1a-4f45-b260-965e18c18863" />
+      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+      <ExternalInterface Name="VulnerabilityRef" ID="32ebc8a3-9568-4deb-a92e-e8647789d8a3" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+  <AttributeTypeLib Name="AttributeTypeLib">
+    <Version>0</Version>
+    <AttributeType Name="AutomationEquipments" AttributeDataType="xs:string">
+      <Attribute Name="Vendor" AttributeDataType="xs:string" />
+      <Attribute Name="Part" AttributeDataType="xs:string" />
+      <Attribute Name="Product" AttributeDataType="xs:string" />
+      <Attribute Name="Version" AttributeDataType="xs:string" />
+      <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+        <Revision>
+          <RevisionDate>2023-05-30T13:39:23.3905358+02:00</RevisionDate>
+          <AuthorName></AuthorName>
+        </Revision>
+      </Attribute>
+      <Attribute Name="Date of first use" AttributeDataType="xs:string" />
+    </AttributeType>
+    <AttributeType Name="Hazard" AttributeDataType="xs:string">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Severity" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <Attribute Name="Consequence" AttributeDataType="xs:string" />
+      <Attribute Name="Causes" AttributeDataType="xs:string" />
+    </AttributeType>
+    <AttributeType Name="Vulnerability" AttributeDataType="xs:string">
+      <Attribute Name="CVE" AttributeDataType="xs:string" />
+      <Attribute Name="CVSS" AttributeDataType="xs:string" ID="CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:T/RC:R" />
+      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+      <Attribute Name="Impact possibility" AttributeDataType="xs:string" />
+      <Attribute Name="mitigation possibility" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of exposure" AttributeDataType="xs:string" />
+    </AttributeType>
+  </AttributeTypeLib>
+</CAEXFile>
